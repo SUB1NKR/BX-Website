@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <title>나만의 코스 찾기 | 따릉이 트레일</title>
+  <link rel="stylesheet" href="./find-course.css" />
+</head>
+<body>
+  <header id="gnb" class="site-gnb">
+    <a href="./index.html?skipLoading=1" class="gnb-logo" aria-label="따릉이 트레일 홈"><img src="./assets/icons/ddareungi-logo.png" alt="따릉이 트레일" /></a>
+    <button id="menuButton" class="gnb-menu-button" type="button" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+  </header>
+
+  <section id="menuPanel" class="menu-panel" aria-label="전체 메뉴">
+    <div class="menu-content">
+      <nav class="menu-nav" aria-label="주요 메뉴">
+        <a href="./index.html?skipLoading=1" class="menu-link" style="--i: 0"><span>홈</span></a>
+        <a href="#" id="courseIndexExternalLink" class="menu-link" style="--i: 1"><span>20코스 안내</span></a>
+        <a href="./find-course.html" class="menu-link" style="--i: 2"><span>나만의 코스 찾기</span></a>
+      </nav>
+      <div class="menu-icon-list" aria-label="외부 링크">
+        <a href="https://www.facebook.com/seoulbike" target="_blank" rel="noopener noreferrer" class="menu-sns-link" style="--i: 3"><img src="./assets/icons/menu-icon-01.png" alt="서울자전거 페이스북" /></a>
+        <a href="https://www.instagram.com/seoulbike_/" target="_blank" rel="noopener noreferrer" class="menu-sns-link" style="--i: 2"><img src="./assets/icons/menu-icon-02.png" alt="서울자전거 인스타그램" /></a>
+        <a href="https://blog.naver.com/2seoulbike" target="_blank" rel="noopener noreferrer" class="menu-sns-link" style="--i: 1"><img src="./assets/icons/menu-icon-03.png" alt="서울자전거 블로그" /></a>
+        <a href="https://www.youtube.com/@seoulbike_" target="_blank" rel="noopener noreferrer" class="menu-sns-link" style="--i: 0"><img src="./assets/icons/menu-icon-04.png" alt="서울자전거 유튜브" /></a>
+      </div>
+    </div>
+    <p class="menu-copyright">COPYRIGHT ⓒ 2026 1_je0.in_ All RIGHTS RESERVED.</p>
+  </section>
+
+  <main class="find-page">
+    <section id="introSection" class="intro-section intro-section-v7">
+      <div class="intro-motion-field" aria-hidden="true">
+        <span class="motion-dot dot-a"></span>
+        <span class="motion-dot dot-b"></span>
+        <span class="motion-dot dot-c"></span>
+        <span class="motion-line line-a"></span>
+        <span class="motion-line line-b"></span>
+      </div>
+
+      <div class="intro-shell-v7">
+        <div class="intro-copy-v7">
+          <p class="intro-kicker-v7">따릉이로 만나는<br />새로운 서울</p>
+          <h1>나에게 딱 맞는<br /><span>따릉이길을 찾아드릴게요.</span></h1>
+          <p class="intro-description-v7">익숙한 거리도 자전거로 달리면 조금 다르게 보입니다.<br />20개의 따릉이길을 따라 나만의 서울을 발견해보세요.</p>
+          <div class="intro-action-row-v7">
+            <button id="startButton" class="primary-button" type="button">코스 추천 받으러 가기!</button>
+            <span>4문항 · 약 30초</span>
+          </div>
+        </div>
+
+        <div class="intro-board-v7" aria-hidden="true">
+          <div class="board-caption-v7">DDARUNGI ROUTE PICKER</div>
+          <div class="route-card-v7 card-main">
+            <img src="./assets/recommend/course-03.jpg" alt="" />
+            <p>한강 풍경 코스</p>
+          </div>
+          <div class="route-card-v7 card-sub card-sub-a">
+            <img src="./assets/recommend/course-16.jpg" alt="" />
+            <p>꽃길 코스</p>
+          </div>
+          <div class="route-card-v7 card-sub card-sub-b">
+            <img src="./assets/recommend/course-07.jpg" alt="" />
+            <p>야경 코스</p>
+          </div>
+          <div class="route-note-v7 note-a">힐링</div>
+          <div class="route-note-v7 note-b">도심</div>
+          <div class="route-note-v7 note-c">한강</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="questionSection" class="question-section" aria-live="polite">
+      <div class="question-progress"><div id="progressBar" class="progress-bar"></div></div>
+      <div class="question-card"><p id="questionCount" class="question-count">1 / 4</p><h2 id="questionTitle">오늘은 어떤 분위기로 달리고 싶나요?</h2><div id="answerList" class="answer-list"></div><div class="question-actions"><button id="prevButton" class="prev-button" type="button">이전 질문</button></div></div>
+    </section>
+
+    <section id="findingSection" class="finding-section"><div class="finding-card"><div class="finding-spinner"></div><h2>추천 코스 찾는 중</h2><p>선택한 답변을 바탕으로<br />가장 어울리는 따릉이길을 고르고 있어요.</p></div></section>
+
+    <section id="resultSection" class="result-section">
+      <div class="result-stage">
+        <div class="result-map-strip" aria-hidden="true">
+          <span>SEOUL BIKE ROUTE</span>
+          <span>DDARUNGI TRAIL</span>
+          <span>RIDE NOTE</span>
+        </div>
+
+        <div class="result-visual-card">
+          <img id="resultImage" src="" alt="" />
+          <div class="result-number-badge" id="resultNumber"></div>
+        </div>
+
+        <article class="result-note-card">
+          <p class="result-label">오늘의 따릉이길 추천</p>
+          <h2 id="resultName"></h2>
+          <p id="resultDescription" class="result-description"></p>
+
+          <div class="result-route-summary">
+            <div class="meta-card"><span>소요시간</span><strong id="resultTime"></strong></div>
+            <div class="meta-card"><span>거리</span><strong id="resultDistance"></strong></div>
+          </div>
+
+          <div id="resultTags" class="result-tags"></div>
+
+          <div class="result-actions">
+            <a id="courseLink" href="#" class="primary-button">코스 자세히 보기</a>
+            <button id="restartButton" class="secondary-button" type="button">다시 찾아보기</button>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div id="externalNotice" class="external-notice" aria-hidden="true">
+    <div class="external-notice-card" role="dialog" aria-modal="true" aria-label="외부 페이지 이동 안내">
+      <p>외부 페이지로 이동합니다.</p>
+      <div class="external-notice-actions">
+        <button id="externalCancelButton" class="external-notice-button is-cancel" type="button">취소</button>
+        <button id="externalMoveButton" class="external-notice-button is-primary" type="button">이동하기</button>
+      </div>
+    </div>
+  </div>
+  <script src="./find-course.js?v=third-revision"></script>
+</body>
+</html>
