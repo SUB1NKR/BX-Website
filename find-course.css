@@ -1928,3 +1928,110 @@ body {
     min-height: auto !important;
   }
 }
+/* 12차 추가 수정: 코스 메인 우측 영역에서 사진/칩만 패럴랙스 적용 */
+
+/* 우측 보드 자체는 고정 */
+.intro-board-v7 {
+  transform: none !important;
+}
+
+/* 보드 배경, 격자, 점선 요소는 부모에 붙어 있으므로 고정 유지 */
+.intro-board-v7::before {
+  transform: rotate(-5deg) !important;
+}
+
+/* 상단 텍스트는 고정 */
+.intro-board-v7 .board-caption-v7 {
+  transform: none !important;
+}
+
+/* 사진 카드만 움직임 */
+.intro-board-v7 .route-card-v7.card-main,
+.intro-board-v7 .card-main {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * 24px),
+      calc(var(--course-parallax-y, 0) * 18px),
+      0
+    )
+    rotate(-4deg) !important;
+}
+
+.intro-board-v7 .route-card-v7.card-sub-a,
+.intro-board-v7 .card-sub-a {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * -18px),
+      calc(var(--course-parallax-y, 0) * 16px),
+      0
+    )
+    rotate(7deg) !important;
+}
+
+.intro-board-v7 .route-card-v7.card-sub-b,
+.intro-board-v7 .card-sub-b {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * 16px),
+      calc(var(--course-parallax-y, 0) * -22px),
+      0
+    )
+    rotate(-6deg) !important;
+}
+
+/* 칩 형태 요소만 움직임 */
+.intro-board-v7 .route-note-v7.note-a,
+.intro-board-v7 .note-a {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * -22px),
+      calc(var(--course-parallax-y, 0) * 14px),
+      0
+    ) !important;
+}
+
+.intro-board-v7 .route-note-v7.note-b,
+.intro-board-v7 .note-b {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * 18px),
+      calc(var(--course-parallax-y, 0) * -16px),
+      0
+    ) !important;
+}
+
+.intro-board-v7 .route-note-v7.note-c,
+.intro-board-v7 .note-c {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * 12px),
+      calc(var(--course-parallax-y, 0) * 22px),
+      0
+    ) !important;
+}
+
+/* 모바일에서는 기존처럼 패럴랙스 제거 */
+@media (max-width: 900px) {
+  .intro-board-v7,
+  .intro-board-v7::before,
+  .intro-board-v7 .board-caption-v7,
+  .intro-board-v7 .route-card-v7,
+  .intro-board-v7 .route-note-v7 {
+    transform: none !important;
+  }
+
+  .intro-board-v7 .route-card-v7.card-main,
+  .intro-board-v7 .card-main {
+    transform: rotate(-4deg) !important;
+  }
+
+  .intro-board-v7 .route-card-v7.card-sub-a,
+  .intro-board-v7 .card-sub-a {
+    transform: rotate(7deg) !important;
+  }
+
+  .intro-board-v7 .route-card-v7.card-sub-b,
+  .intro-board-v7 .card-sub-b {
+    transform: rotate(-6deg) !important;
+  }
+}
