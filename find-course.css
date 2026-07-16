@@ -1680,7 +1680,7 @@ body {
 
 /* 12차 수정사항 4: 코스 결과화면 카드 아래 여백 보정 */
 .result-content {
-  padding-bottom: clamp(28px, 3vw, 42px) !important;
+  padding-bottom: clamp(28px, 3vw, 62px) !important;
 }
 
 .result-actions {
@@ -1717,39 +1717,5 @@ body {
   .intro-board-v7 .board-caption-v7 {
     transition: none;
     transform: none !important;
-  }
-}
-
-/* 12차 추가 수정: 코스 결과 화면 하단 여백을 좌우 여백과 맞춤 */
-.result-section {
-  padding:
-    calc(var(--gnb-height) + 48px)
-    56px
-    56px !important;
-}
-
-.result-card {
-  margin-bottom: 0 !important;
-}
-
-.result-content {
-  padding-bottom: clamp(36px, 4.8vw, 62px) !important;
-}
-
-.result-actions {
-  padding-top: 34px !important;
-  margin-top: auto;
-}
-
-@media (max-width: 900px) {
-  .result-section {
-    padding:
-      calc(var(--gnb-height) + 36px)
-      20px
-      42px !important;
-  }
-
-  .result-content {
-    padding-bottom: 34px !important;
   }
 }
