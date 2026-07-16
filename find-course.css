@@ -1294,3 +1294,210 @@ body {
   }
 }
 
+/* 11차 수정사항: 결과 로딩/결과 화면 - 흰색 바탕 + 따릉이 그린 원형 그라디언트 인터랙션 */
+.finding-section,
+.result-section {
+  background-color: #ffffff !important;
+  background-image:
+    radial-gradient(circle at var(--green-orb-a-x, 14%) var(--green-orb-a-y, 18%),
+      rgba(48, 226, 145, 0.62) 0%,
+      rgba(48, 226, 145, 0.34) 18%,
+      rgba(48, 226, 145, 0.12) 34%,
+      transparent 56%),
+    radial-gradient(circle at var(--green-orb-b-x, 86%) var(--green-orb-b-y, 20%),
+      rgba(112, 255, 197, 0.58) 0%,
+      rgba(112, 255, 197, 0.30) 20%,
+      rgba(112, 255, 197, 0.10) 38%,
+      transparent 58%),
+    radial-gradient(circle at var(--green-orb-c-x, 48%) var(--green-orb-c-y, 86%),
+      rgba(48, 226, 145, 0.52) 0%,
+      rgba(48, 226, 145, 0.26) 19%,
+      rgba(48, 226, 145, 0.09) 38%,
+      transparent 60%),
+    linear-gradient(135deg, #ffffff 0%, #f8fffb 46%, #ffffff 100%) !important;
+  background-size: 150% 150%, 165% 165%, 175% 175%, 100% 100%;
+  background-position:
+    var(--green-orb-a-pos, 0% 8%),
+    var(--green-orb-b-pos, 100% 12%),
+    var(--green-orb-c-pos, 46% 100%),
+    center;
+  animation: ddareungiGreenOrbMove 8.5s ease-in-out infinite !important;
+  overflow: hidden;
+}
+
+/* 기존 결과 화면에서 이미지 배경을 덮는 before가 있으면 흰 배경+원형 그라디언트가 가려질 수 있어 비활성화 */
+.result-section::before {
+  display: none !important;
+}
+
+/* 로딩/결과 화면 위로 은은한 빛 이동 레이어 추가 */
+.finding-section::after,
+.result-section::after {
+  content: "";
+  position: absolute;
+  inset: var(--gnb-height) 0 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 26%, rgba(48, 226, 145, 0.20), transparent 34%),
+    radial-gradient(circle at 82% 72%, rgba(48, 226, 145, 0.18), transparent 36%),
+    linear-gradient(110deg, transparent 0%, rgba(48, 226, 145, 0.16) 43%, transparent 64%);
+  background-size: 130% 130%, 140% 140%, 220% 220%;
+  mix-blend-mode: multiply;
+  opacity: 0.9;
+  animation: ddareungiGreenLightSweep 5.8s ease-in-out infinite;
+}
+
+/* 콘텐츠는 그라디언트 레이어보다 위로 */
+.finding-card,
+.result-card,
+.result-stage,
+.result-content,
+.result-visual-card,
+.result-note-card {
+  position: relative;
+  z-index: 3;
+}
+
+@keyframes ddareungiGreenOrbMove {
+  0% {
+    background-position: 0% 8%, 100% 12%, 46% 100%, center;
+  }
+  22% {
+    background-position: 38% 2%, 72% 28%, 18% 76%, center;
+  }
+  48% {
+    background-position: 82% 34%, 34% 64%, 8% 42%, center;
+  }
+  74% {
+    background-position: 28% 84%, 96% 52%, 78% 64%, center;
+  }
+  100% {
+    background-position: 0% 8%, 100% 12%, 46% 100%, center;
+  }
+}
+
+@keyframes ddareungiGreenLightSweep {
+  0% {
+    background-position: 8% 20%, 92% 72%, -70% 50%;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 34% 42%, 58% 36%, 150% 50%;
+    transform: scale(1.04);
+  }
+  100% {
+    background-position: 8% 20%, 92% 72%, -70% 50%;
+    transform: scale(1);
+  }
+}
+
+/* 11차 수정사항: 코스 메인 우측 요소 마우스 기반 패럴랙스 */
+.intro-board-v7,
+.intro-board-v7 .route-card-v7,
+.intro-board-v7 .route-note-v7,
+.intro-board-v7 .board-caption-v7 {
+  will-change: transform;
+  transition: transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.intro-board-v7 {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * 10px),
+      calc(var(--course-parallax-y, 0) * 10px),
+      0
+    );
+}
+
+.intro-board-v7 .card-main {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * 22px),
+      calc(var(--course-parallax-y, 0) * 18px),
+      0
+    )
+    rotate(-4deg);
+}
+
+.intro-board-v7 .card-sub-a {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * -18px),
+      calc(var(--course-parallax-y, 0) * 15px),
+      0
+    )
+    rotate(7deg);
+}
+
+.intro-board-v7 .card-sub-b {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * 16px),
+      calc(var(--course-parallax-y, 0) * -20px),
+      0
+    )
+    rotate(-6deg);
+}
+
+.intro-board-v7 .note-a {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * -24px),
+      calc(var(--course-parallax-y, 0) * 14px),
+      0
+    );
+}
+
+.intro-board-v7 .note-b {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * 18px),
+      calc(var(--course-parallax-y, 0) * -16px),
+      0
+    );
+}
+
+.intro-board-v7 .note-c {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * 12px),
+      calc(var(--course-parallax-y, 0) * 24px),
+      0
+    );
+}
+
+.intro-board-v7 .board-caption-v7 {
+  transform:
+    translate3d(
+      calc(var(--course-parallax-x, 0) * 8px),
+      calc(var(--course-parallax-y, 0) * -8px),
+      0
+    );
+}
+
+@media (max-width: 900px) {
+  .intro-board-v7,
+  .intro-board-v7 .route-card-v7,
+  .intro-board-v7 .route-note-v7,
+  .intro-board-v7 .board-caption-v7 {
+    transform: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .finding-section,
+  .result-section,
+  .finding-section::after,
+  .result-section::after {
+    animation: none !important;
+  }
+
+  .intro-board-v7,
+  .intro-board-v7 .route-card-v7,
+  .intro-board-v7 .route-note-v7,
+  .intro-board-v7 .board-caption-v7 {
+    transition: none;
+    transform: none !important;
+  }
+}
