@@ -1048,7 +1048,10 @@ body {
 /* 9차 수정사항: 코스 결과 화면을 8차 이전 디자인으로 복구 */
 /* 3차 수정사항: 코스 결과 화면 완전 신규 디자인 */
 .result-section {
-  padding: calc(var(--gnb-height) + 46px) 42px 54px;
+  padding:
+    calc(var(--gnb-height) + 46px)
+    56px
+    56px;
   background:
     radial-gradient(circle at 12% 18%, rgba(48, 226, 145, 0.16), transparent 32%),
     linear-gradient(135deg, #f7fff9 0%, #ffffff 52%, #ecfff6 100%);
@@ -1063,9 +1066,9 @@ body {
   position: relative;
   z-index: 3;
   width: min(1180px, 100%);
-  min-height: min(720px, calc(100vh - var(--gnb-height) - 96px));
-  padding: clamp(20px, 2.5vw, 34px);
-  border-radius: clamp(32px, 3vw, 48px);
+  min-height: auto;
+  max-height: calc(100vh - var(--gnb-height) - 102px);
+  padding: clamp(24px, 2.6vw, 34px);
   background:
     linear-gradient(90deg, rgba(48, 226, 145, 0.12) 1px, transparent 1px),
     linear-gradient(180deg, rgba(48, 226, 145, 0.1) 1px, transparent 1px),
@@ -1680,11 +1683,11 @@ body {
 
 /* 12차 수정사항 4: 코스 결과화면 카드 아래 여백 보정 */
 .result-content {
-  padding-bottom: clamp(28px, 3vw, 62px) !important;
+  padding-bottom: clamp(34px, 4vw, 62px) !important;
 }
 
 .result-actions {
-  padding-top: 24px !important;
+  padding-top: 28px !important;
   margin-top: auto;
 }
 
@@ -1717,84 +1720,5 @@ body {
   .intro-board-v7 .board-caption-v7 {
     transition: none;
     transform: none !important;
-  }
-}
-
-/* 결과 화면 하단 여백 보정: 좌우 여백과 하단 여백을 같은 기준으로 맞춤 */
-.result-section {
-  --result-page-side-gap: clamp(42px, 4vw, 56px);
-  --result-page-top-gap: 46px;
-
-  padding:
-    calc(var(--gnb-height) + var(--result-page-top-gap))
-    var(--result-page-side-gap)
-    var(--result-page-side-gap) !important;
-
-  align-items: center !important;
-}
-
-/* 9차 이후 결과 화면 구조 대응 */
-.result-stage {
-  width: min(1180px, 100%) !important;
-  min-height: auto !important;
-  max-height: calc(
-    100vh - var(--gnb-height) - var(--result-page-top-gap) - var(--result-page-side-gap)
-  ) !important;
-
-  padding: clamp(24px, 2.6vw, 34px) !important;
-  box-sizing: border-box !important;
-}
-
-/* 좌우 이미지/노트 카드가 stage 높이를 밀어내지 않도록 보정 */
-.result-visual-card,
-.result-note-card {
-  min-height: auto !important;
-  height: auto !important;
-}
-
-/* 이미지 카드가 너무 길어져 아래 여백을 먹는 경우 방지 */
-.result-visual-card img {
-  min-height: auto !important;
-  height: 100% !important;
-}
-
-/* 버튼 아래 내부 여백 보정 */
-.result-note-card {
-  padding-bottom: clamp(34px, 4vw, 58px) !important;
-}
-
-.result-actions {
-  padding-top: 28px !important;
-  margin-top: auto !important;
-}
-
-/* 혹시 기존 result-card/result-content 구조가 살아있는 경우까지 대응 */
-.result-card {
-  margin-bottom: 0 !important;
-}
-
-.result-content {
-  padding-bottom: clamp(34px, 4vw, 58px) !important;
-}
-
-/* 모바일은 기존 모바일 여백 유지 */
-@media (max-width: 900px) {
-  .result-section {
-    --result-page-side-gap: 20px;
-    --result-page-top-gap: 34px;
-
-    padding:
-      calc(var(--gnb-height) + var(--result-page-top-gap))
-      var(--result-page-side-gap)
-      42px !important;
-  }
-
-  .result-stage {
-    max-height: none !important;
-    padding: 18px !important;
-  }
-
-  .result-note-card {
-    padding-bottom: 32px !important;
   }
 }
