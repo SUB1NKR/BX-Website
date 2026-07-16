@@ -1798,3 +1798,133 @@ body {
     padding-bottom: 32px !important;
   }
 }
+
+/* 결과 화면 잘림 방지 최종 보정
+   - 화면이 작거나 카드가 높아질 경우 스크롤 허용
+   - 하단 여백이 잘리지 않도록 overflow hidden 해제
+   - 기존 디자인은 유지하고 레이아웃 안전성만 보정
+*/
+
+.result-section {
+  min-height: 100vh !important;
+  height: auto !important;
+
+  padding:
+    calc(var(--gnb-height) + 46px)
+    clamp(42px, 4vw, 56px)
+    clamp(42px, 4vw, 56px) !important;
+
+  align-items: flex-start !important;
+  justify-content: center !important;
+
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+}
+
+.result-section.is-visible {
+  display: flex !important;
+}
+
+/* 결과 화면 안쪽 보드가 viewport 높이를 넘으면 자연스럽게 늘어나게 처리 */
+.result-stage {
+  width: min(1180px, 100%) !important;
+
+  min-height: auto !important;
+  height: auto !important;
+  max-height: none !important;
+
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+/* 좌우 카드가 높이를 강제로 밀어 화면 밖으로 나가지 않도록 처리 */
+.result-visual-card,
+.result-note-card {
+  min-height: auto !important;
+  height: auto !important;
+  overflow: hidden;
+}
+
+/* 이미지 영역은 너무 커져서 아래를 자르지 않도록 최대 높이 지정 */
+.result-visual-card {
+  max-height: none !important;
+}
+
+/* 큰 화면에서는 이미지가 과도하게 커져 하단을 밀지 않도록 안정화 */
+.result-visual-card img,
+#resultImage,
+.result-image {
+  width: 100%;
+  height: 100% !important;
+  min-height: 0 !important;
+  object-fit: cover;
+}
+
+/* 오른쪽 노트 카드 내부 하단 여백 확보 */
+.result-note-card {
+  padding-bottom: clamp(34px, 4vw, 58px) !important;
+}
+
+/* 버튼 아래가 붙어 보이지 않게 보정 */
+.result-actions {
+  padding-top: 32px !important;
+  margin-top: auto !important;
+  padding-bottom: 0 !important;
+}
+
+/* 기존 result-card/result-content 구조가 남아 있는 경우도 같이 대응 */
+.result-card {
+  margin-bottom: 0 !important;
+  overflow: visible !important;
+}
+
+.result-content {
+  padding-bottom: clamp(36px, 4.8vw, 62px) !important;
+  overflow: visible !important;
+}
+
+/* 높이가 낮은 화면에서는 스크롤이 확실히 생기도록 카드 정렬 변경 */
+@media (max-height: 820px) {
+  .result-section {
+    align-items: flex-start !important;
+    padding-top: calc(var(--gnb-height) + 34px) !important;
+    padding-bottom: 48px !important;
+  }
+
+  .result-stage {
+    min-height: auto !important;
+  }
+
+  .result-visual-card,
+  .result-note-card {
+    margin-top: 0 !important;
+  }
+}
+
+/* 모바일 대응 */
+@media (max-width: 900px) {
+  .result-section {
+    min-height: 100vh !important;
+    height: auto !important;
+
+    padding:
+      calc(var(--gnb-height) + 34px)
+      20px
+      42px !important;
+
+    align-items: flex-start !important;
+    overflow-y: auto !important;
+  }
+
+  .result-stage {
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  .result-visual-card,
+  .result-note-card {
+    min-height: auto !important;
+  }
+}
