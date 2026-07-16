@@ -218,6 +218,58 @@ window.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
   }
 
+  function initCourseMainParallax() {
+  const introBoard = document.querySelector('.intro-board-v7');
+
+  if (!introBoard) return;
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
+  let rafId = null;
+
+  function updateParallax() {
+    currentX += (targetX - currentX) * 0.12;
+    currentY += (targetY - currentY) * 0.12;
+
+    introBoard.style.setProperty('--course-parallax-x', currentX.toFixed(4));
+    introBoard.style.setProperty('--course-parallax-y', currentY.toFixed(4));
+
+    if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001) {
+      rafId = requestAnimationFrame(updateParallax);
+      return;
+    }
+
+    rafId = null;
+  }
+
+  function requestParallaxFrame() {
+    if (rafId) return;
+    rafId = requestAnimationFrame(updateParallax);
+  }
+
+  introSection?.addEventListener('mousemove', (event) => {
+    const rect = introSection.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    targetX = (event.clientX - centerX) / (rect.width / 2);
+    targetY = (event.clientY - centerY) / (rect.height / 2);
+
+    targetX = Math.max(-1, Math.min(1, targetX));
+    targetY = Math.max(-1, Math.min(1, targetY));
+
+    requestParallaxFrame();
+  });
+
+  introSection?.addEventListener('mouseleave', () => {
+    targetX = 0;
+    targetY = 0;
+    requestParallaxFrame();
+  });
+}
 
   menuButton?.addEventListener('click', (event) => { event.preventDefault(); toggleMenu(); });
   startButton?.addEventListener('click', (event) => { event.preventDefault(); startRecommendation(); });
@@ -233,3 +285,5 @@ window.addEventListener('DOMContentLoaded', () => {
     showExternalNoticeAndMove(courseIndexUrl);
   });
 });
+
+initCourseMainParallax();
